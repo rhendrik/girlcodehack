@@ -2,18 +2,18 @@
   <div id="app" class=" notification is-warning">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <div class="notification is-link hero">
-      <dv class="hero-body">
-      <i class="material-icons has-text-warning">wb_sunny</i>
-      <h1 class="notification is-link has-text-white hero-title">FloodLight</h1>
-      <p class="hero-text">shining light on women's safety</p>
-    </dv>
+      <div class="hero-body">
+        <i class="material-icons has-text-warning">wb_sunny</i>
+        <h1 class="notification is-link has-text-white hero-title">FloodLight</h1>
+        <p class="hero-text">shining light on women's safety</p>
+      </div>
     </div>
     <dash></dash>
 
-    <div class="notification is-warning">
-      <footer class="notification is-link has-text-white">explorers</footer> 
-    </div>
-  </div>
+<div class="notification is-warning">
+  <footer class="notification is-link has-text-white">explorers</footer> 
+</div>
+</div>
 </template>
 
 <script>
