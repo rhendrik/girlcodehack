@@ -17,14 +17,13 @@
       <h1 v-if="city_set & suburb_set">You have selected {{suburb_found}}</h1>
     </div>
     <div>
-      <h1>search by safety</h1>
       <!--search by safety grade-->
 
       <!--set timeline-->
 
       <!-- Display Results-->
 
-      <results></results>
+      <results v-if="city_set & suburb_set"></results>
 
     </div>
   </div>
