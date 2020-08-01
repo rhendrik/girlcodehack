@@ -1,19 +1,20 @@
 <template>
   <div>
     <div> 
-      <h1>Select your City</h1>
+      <h1 v-if="!city_set">Select your City</h1>
       <div v-for="city in cities" :key="city">
         <button @click="set_city(city);city_set = !city_set" v-if="!city_set">{{city}}</button>
       </div>
-      <h1>You have selected {{city_found}}</h1>
+      <h1 v-if="city_set">You have selected {{city_found}}</h1>
 
       <!--search for suburb-->
-      <div v-if="(city_set)">
-        <button  v-for="suburb in suburbs.johannesburg" :key="suburb" @click="set_suburb(suburb)">
+      <h1 v-if="city_set & !suburb_set">Select your Suburb</h1>
+      <div v-if="(city_set) & !suburb_set">
+        <button  v-for="suburb in suburbs.johannesburg" :key="suburb" @click="set_suburb(suburb); suburb_set = !suburb_set">
           {{suburb}}
         </button>
-        {{suburb_found}}
       </div>
+      <h1 v-if="city_set & suburb_set">You have selected {{suburb_found}}</h1>
     </div>
     <div>
       <h1>search by safety</h1>
@@ -21,12 +22,17 @@
 
       <!--set timeline-->
 
+      <!-- Display Results-->
+
+      <results></results>
+
     </div>
   </div>
 </template>
 
 <script>
   import { mapGetters, mapMutations } from 'vuex'
+  import results from './Results.vue'
   import {
     mapActions as mapSearchActions,
     mapGetters as mapSearchGetters,
@@ -38,6 +44,7 @@
       return {
         item_found: "",
         city_set: false,
+        suburb_set: false,
         isDropdownActive: false,
       }
     },
@@ -73,6 +80,9 @@
         this.$store.commit('updateCity', e.target.value)
       }
     },
+    components: {
+      Results: results,
+    }
   }
 </script>
 
