@@ -5,13 +5,15 @@
       <div v-for="city in cities" :key="city">
         <button @click="set_city(city);city_set = !city_set" v-if="!city_set">{{city}}</button>
       </div>
-      {{city_found}}
+      <h1>You have selected {{city_found}}</h1>
 
       <!--search for suburb-->
-      <button v-for="suburb in suburbs" :key="suburb.johannesburg">
-        {{suburb}}
-      </button>
-
+      <div v-if="(city_set)">
+        <button  v-for="suburb in suburbs.johannesburg" :key="suburb" @click="set_suburb(suburb)">
+          {{suburb}}
+        </button>
+        {{suburb_found}}
+      </div>
     </div>
     <div>
       <h1>search by safety</h1>
@@ -34,7 +36,7 @@
   export default{
     data() {
       return {
-        suburb_found: "",
+        item_found: "",
         city_set: false,
         isDropdownActive: false,
       }
@@ -48,7 +50,8 @@
         'search_results',
         'cities',
         'suburbs',
-        'city_found'
+        'city_found',
+        'suburb_found'
         ]),
       ...mapSearchGetters('search', {
         resultIds: getterTypes.result,
@@ -57,7 +60,8 @@
     },
     methods: {
       ...mapMutations('search',[
-        'set_city'
+        'set_city',
+        'set_suburb'
         ]),
       ...mapSearchActions('search', {
         searchCities: actionTypes.search,
