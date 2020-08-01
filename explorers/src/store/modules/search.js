@@ -4,9 +4,11 @@ export default {
 		search_results: [],		
 		test: "Testing",
 		cities: ["Johannesburg", "Tshwane", "Polokwane", "Nelspruit"],
-		suburbs: {
-			"Johannesburg":["Marshalltown", "Blairgowrie", "Braamfontein"], "Centurion":["Die Hoewes", "Valhalla"], "Nelspruit":["whiteriver", "Hazyview"]
-		},
+		suburbs: [
+			{johannesburg:["Marshalltown",  "Braamfontein"] },
+			{centurion:["Die Hoewes", "Valhalla"]}, 
+			{nelspruit:["whiteriver", "Hazyview"]}
+		],
 		city_found: "none",
 	},
 	mutations: {

@@ -2,17 +2,15 @@
   <div>
     <div> 
       <h1>Select your City</h1>
-      <!--search for city-->
-      <button @click="city_set = !city_set">set city</button>
-      <form>
-        <input type="text" name="city" required v-model="suburb_found">
-        {{suburb_found}}
-        {{city_found}}
-        <button type="button" @click="set_city(suburb_found)" id="submit">submit</button>
-      </form>
-      <h1 v-if="city_set">Search your Suburb</h1>
+      <div v-for="city in cities" :key="city">
+        <button @click="set_city(city);city_set = !city_set" v-if="!city_set">{{city}}</button>
+      </div>
+      {{city_found}}
 
       <!--search for suburb-->
+      <button v-for="suburb in suburbs" :key="suburb.johannesburg">
+        {{suburb}}
+      </button>
 
     </div>
     <div>
@@ -38,6 +36,7 @@
       return {
         suburb_found: "",
         city_set: false,
+        isDropdownActive: false,
       }
     },
     name: 'Dash',
@@ -57,9 +56,9 @@
       }),
     },
     methods: {
-    ...mapMutations('search',[
-      'set_city'
-      ]),
+      ...mapMutations('search',[
+        'set_city'
+        ]),
       ...mapSearchActions('search', {
         searchCities: actionTypes.search,
       }),
