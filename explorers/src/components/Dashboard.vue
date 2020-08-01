@@ -8,7 +8,7 @@
         <input type="text" name="city" required v-model="suburb_found">
         {{suburb_found}}
         {{city_found}}
-        <button id="submit" @click="set_city(suburb_found)"></button>
+        <button type="button" @click="set_city(suburb_found)" id="submit">submit</button>
       </form>
       <h1 v-if="city_set">Search your Suburb</h1>
 
@@ -55,11 +55,11 @@
         resultIds: getterTypes.result,
         isLoading: getterTypes.isSearching,
       }),
-      ...mapMutations('search',[
-        'set_city',
-        ]),
     },
     methods: {
+    ...mapMutations('search',[
+      'set_city'
+      ]),
       ...mapSearchActions('search', {
         searchCities: actionTypes.search,
       }),
@@ -70,12 +70,7 @@
         this.$store.commit('updateCity', e.target.value)
       }
     },
-    mutations: {
-      updateCity (state, message) {
-        state.obj.city_found = message
-      }
-    },
   }
-  </script>
+</script>
 
-  <style></style>
+<style></style>

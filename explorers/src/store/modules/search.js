@@ -7,7 +7,7 @@ export default {
 		suburbs: {
 			"Johannesburg":["Marshalltown", "Blairgowrie", "Braamfontein"], "Centurion":["Die Hoewes", "Valhalla"], "Nelspruit":["whiteriver", "Hazyview"]
 		},
-		city_found: '',
+		city_found: "none",
 	},
 	mutations: {
 		set_city(state, payload) {
