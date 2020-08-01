@@ -1,6 +1,7 @@
 <template>
   <div>
     <div> 
+      <!--Select your city-->
       <h1 v-if="!city_set">Select your City</h1>
       <div v-for="city in cities" :key="city">
         <button @click="set_city(city);city_set = !city_set" v-if="!city_set">{{city}}</button>
@@ -17,9 +18,6 @@
       <h1 v-if="city_set & suburb_set">You have selected {{suburb_found}}</h1>
     </div>
     <div>
-      <!--search by safety grade-->
-
-      <!--set timeline-->
 
       <!-- Display Results-->
 
